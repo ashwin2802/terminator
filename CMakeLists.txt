@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 2.8.3)
-project(executor)
+project(terminator)
 
 find_package(catkin REQUIRED)
 find_package(catkin_simple REQUIRED)

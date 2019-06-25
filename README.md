@@ -14,7 +14,7 @@ catkin init
 Clone this repository into the `src` subfolder of the workspace, then build it:
 ``` bash
 git clone https://github.com/ashwin2802/execution_srv.git
-catkin build executor
+catkin build terminator
 source ~/catkin_ws/devel/setup.zsh
 ```
 
@@ -29,7 +29,7 @@ Publishes an incremental stream of integers:
 Provides the actual execution service, and also republishes data from the publisher.  
 **Topics Published:** `/output`  
 **Topics Subscribed:** `/input`  
-**Services:** `/execute`  
+**Services:** `/terminate`  
 
 ### Client
 Provides a client that be used to call the service instead of having to use `rosservice call`. Takes the signal value as an argument.  
@@ -40,5 +40,5 @@ Provides a client that be used to call the service instead of having to use `ros
 
 The service takes an integer `signal`, which can be either of `-1`, `0` or `1`, as input and returns a boolean indicating whether the service was successfully called. `-1` kills the server node, `0` stops the publisher and subscriber of the server node and `1` restarts them.
 
-You can call the service from the terminal using either ``` rosservice call /execute "signal :0" ``` or ``` rosrun executor client 0 ```. (replace `0` with `-1` or `1` accordingly)
+You can call the service from the terminal using either ``` rosservice call /terminate "signal :0" ``` or ``` rosrun terminator client 0 ```. (replace `0` with `-1` or `1` accordingly)
  

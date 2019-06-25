@@ -1,6 +1,6 @@
 #include <ros/ros.h>
 #include <std_msgs/Int64.h>
-#include <executor/signal.h>
+#include <terminator/signal.h>
 
 #define exit flag == -1
 #define run flag == 1
@@ -14,7 +14,7 @@ int flag = 1;   // execution flag variable
 int data = 0;   // data variable
 
 // handle service call
-bool process(executor::signal::Request &req, executor::signal::Response &res){
+bool process(terminator::signal::Request &req, terminator::signal::Response &res){
     
     // process request
     switch(req.signal){
@@ -56,7 +56,7 @@ int main(int argc, char **argv){
     ros::init(argc, argv, "server");    // initialize server
     ros::NodeHandle nh;
 
-    ros::ServiceServer server = nh.advertiseService("execute", process);  // server object
+    ros::ServiceServer server = nh.advertiseService("terminate", process);  // server object
     ros::Subscriber sub = nh.subscribe("input", 10, callback);           // data subscriber
     ros::Publisher pub = nh.advertise<std_msgs::Int64>("output", 10);   // data publisher
     
@@ -71,11 +71,11 @@ int main(int argc, char **argv){
             
             msg.data = data;    // add data to message
             pub.publish(msg);   // publish message
-            pubRate.sleep();    // control message rate
 
         }
 
         ros::spinOnce();    // update callback and check for service calls
+        pubRate.sleep();    // control message rate
     }
     return 0;
 }

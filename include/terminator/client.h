@@ -1,11 +1,11 @@
 #include <ros/ros.h>
-#include <executor/signal.h>
+#include <terminator/signal.h>
 
 void call(ros::NodeHandle nh, int signal){
     
-    ros::ServiceClient client = nh.serviceClient<executor::signal>("execute");  // service client to call service
+    ros::ServiceClient client = nh.serviceClient<terminator::signal>("terminate");  // service client to call service
 
-    executor::signal srv;           // service object to send request
+    terminator::signal srv;           // service object to send request
     srv.request.signal = signal;    // feed signal into request
 
     if(client.call(srv)){   // if service call returns 1

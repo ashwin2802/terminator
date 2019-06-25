@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
 <launch>
-    <node pkg="executor" type="publisher" name="publisher" output="screen"/>
-    <node pkg="executor" type="server" name="server" output="screen"/>
+    <node pkg="terminator" type="publisher" name="publisher" output="screen"/>
+    <node pkg="terminator" type="server" name="server" output="screen"/>
 </launch>

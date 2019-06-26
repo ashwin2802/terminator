@@ -1,5 +1,5 @@
-# Execution Service
-A rosservice-based hack to control execution of a ROS node.
+# Terminator
+A rosservice-based hack to control execution and termination of a ROS node.
 
 This package is an implementation of a custom service that can be used to start and stop the publishers and subscribers of a node as and when required, or to also cleanly kill the node.
 
